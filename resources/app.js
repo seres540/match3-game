@@ -140,6 +140,7 @@ window.onload = function () {
         previous: 0,
         current: 0
     };
+    let isWinShown = false;
 
     let statsCounter = {};
 
@@ -599,6 +600,29 @@ window.onload = function () {
                 scoreCounter.classList.remove('score-counter__bounce');
             }, 100)
         }
+        if (score.current >= 1000 && !isWinShown) {
+            isWinShown = true;
+            showWinMessage();
+        }
+    }
+
+    function showWinMessage() {
+        finishGame(); // остановить игру (по желанию)
+
+        const message = document.createElement("div");
+        message.innerHTML = "Перекур мальчики девочки?)";
+
+        message.style.position = "fixed";
+        message.style.top = "50%";
+        message.style.left = "50%";
+        message.style.transform = "translate(-50%, -50%)";
+        message.style.fontSize = "32px";
+        message.style.background = "white";
+        message.style.padding = "20px";
+        message.style.borderRadius = "10px";
+        message.style.zIndex = "9999";
+
+        document.body.appendChild(message);
     }
 
     // Update stats
@@ -1167,6 +1191,7 @@ window.onload = function () {
 
     // Start a new game
     function newGame() {
+        isWinShown = false;
 
         // Reset game
         finishGame('');
