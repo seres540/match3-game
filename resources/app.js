@@ -600,7 +600,7 @@ window.onload = function () {
                 scoreCounter.classList.remove('score-counter__bounce');
             }, 100)
         }
-        if (score.current >= 1000 && !isWinShown) {
+        if (score.current >= 100 && !isWinShown) {
             isWinShown = true;
             showWinMessage();
         }
