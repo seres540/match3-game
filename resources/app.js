@@ -584,13 +584,6 @@ window.onload = function () {
             boosterAnyColorBadge.innerHTML = "";
         }
 
-        // Update timer
-        let scoreDiff = score.current - score.previous;
-        if (scoreDiff > 0) {
-            let newTimerCurrent = timer.current + Math.floor(scoreDiff / 3);
-            timer.current = newTimerCurrent > timer.start ? timer.start : newTimerCurrent;
-        }
-
         // Update scores
         scoreCounter.innerHTML = score.current;
         score.previous = score.current;
@@ -600,7 +593,7 @@ window.onload = function () {
                 scoreCounter.classList.remove('score-counter__bounce');
             }, 100)
         }
-        if (score.current >= 100 && !isWinShown) {
+        if (score.current >= 300 && !isWinShown) {
             isWinShown = true;
             showWinMessage();
         }
@@ -610,7 +603,10 @@ window.onload = function () {
         finishGame(); // остановить игру (по желанию)
 
         const message = document.createElement("div");
-        message.innerHTML = "Перекур мальчики девочки?)";
+        message.innerHTML = `
+            <h1 style="margin-bottom:10px; text-align:center;">Победа!</h1>
+            <div style="text-align:center;">🎉 Перекур мальчики девочки?)</div>
+        `;
 
         message.style.position = "fixed";
         message.style.top = "50%";
